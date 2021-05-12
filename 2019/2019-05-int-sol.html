@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="https://latex.now.sh/prism/prism.css">
+    <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script>
+  
+    <link rel="stylesheet" href="https://latex.now.sh/style.min.css" />
+
+    <title>KingOfDireWolves</title>
+</head>
+<body id="top">
+    <header>
+         <h1>2019 May Intermediate Contest</h1>
+         <p class="author">
+           KingOfDireWolves
+         </p>
+       </header>
+<br> <br> <br> <br> 
+<ul>
+    <li>Time : 4 hours</li>
+    <li>Each problem is worth 7 points</li>
+    <li>Calculators and protractors are not allowed.</li>
+</ul>
+<br> <br> 
+\(\require{ams}\)
+	<h3>Problem 1</h3> 
+	Find all positive integers \(a\) and \(b\) such that \(a^2  + 2b^2\) is a power of 2.  <h6>Proposed by Tony Wang</h6>
+    
+	
+	
+    <br>
+    <h3>Solution</h3>
+    <h6>By Tony Wang</h6>
+    Define a \({primitive}\) solution to be a triple of positive integers \((x, y, z)\) such that \(z = 0\) or \(1\) and \(x^2 + 2y^2 = 2^z\). Suppose that \(a^2 + 2b^2 = 2^n\) for some non-primitive triple \((a, b, n)\). Taking both sides modulo 2 we have \[a^2 \equiv 0 \pmod 2 \implies a \equiv 0 \pmod 2.\] Thus we may write \(a = 2c\) for some positive integer \(c\), and the equation becomes \(4c^2 + 2b^2 = 2^n\). Dividing both sides by 2 we obtain \(2c^2 + b^2 = 2^{n-1}\). Using the same argument on \(b\) we note that we may write \(b = 2d\) for some positive integer \(d\). Hence the equation becomes \(2c^2 + 4d^2 = 2^{n-1}\), which after dividing both sides by 2 becomes \(c^2 + 2d^2 = 2^{n-2}\). <br><br>
+	
+	Thus we note that if \((a, b, n)\) is a non-primitive solution, then \((c, d, n-2)\) is also a solution. This implies that any solution \((a, b, n)\) to the original equation can be reduced by repeatedly applying the above method to reach a primitive solution \((a', b', n')\) where \(n' = 0\) or \(1\). However we note that there are no pairs of positive integers \(a\) and \(b\) such that \(a^2 + 2b^2 = 1\) or \(2\), and so there are no primitive solutions. <br><br>
+	
+	We note that the existence of any general solution \((a, b, n)\) to the original equation would contradict the non-existence of primitive solutions, and thus we can conclude that there cannot be any solutions in general.<!--\hfill\ensuremath{\square}\\-->
+	<br>
+		
+    <h6>By Daniel</h6>
+    Let \(v_2(n) = a\) denote the maximal number of times of 2 in \(a\) -- that is, \(2^a \mid n\), but \(2^{a+1} \nmid n\). Note that \(v_2(a^2) = p\) is even but \(v_2(2b^2) = q\) is odd, so in particular, we have \(p \neq q\). Let \(k = \min (p,q)\). Then we have \(2^k c + 2^k d = 2^n\) where \(c = a^2/2^k\) and \(d = 2b^2/2^k\). However since \(k = p \neq q\) or \(k = q \neq p\) we know that exactly one of \(c\) and \(d\) is odd, and so \(2^k (c+d) = 2^n \implies c+d = 1 \implies c = 0\) or \(d = 0\). But this implies \(a = 0\) or \(b = 0\), so therefore we conclude that there are no solutions. 
+    <br> <br><hr>
+
+	<h3>Problem 2</h3>
+	Let \(\mathbb{R}\) denote the set of real numbers. Find all functions \(f:\mathbb{R} \to \mathbb{R}\) such that for all real numbers \(x\) and \(y\), \[f(x f(x) + f(y)) = x f(x + y).\] <h6>Proposed by Sharky Kesa</h6>
+   
+    <br>
+    <h3>Solution</h3>
+    <h6>By Gonzo17</h6>
+    Substituting \(x = 0\) yields \(f(f(y)) = 0\) for all \(y \in \mathbb{R}\). Now for any real \(u\), substitute \(x = f(u)\) and \(y = u - f(u)\) to obtain
+	\begin{align*}
+	f(x f(f(u)) + f(y)) = f(u) f(f(u) + u - f(u)) &\implies f(f(y)) = f(u) f(u)\\
+	&\implies 0 = f(u)^2.
+	\end{align*}
+	 From this it immediate follows that \(f(u) = 0\) for all real \(u\), which we can verify as if \(f(x) = 0\) for all real \(x\), we have \[f(xf(x) + f(y)) = xf(x+y) \implies 0 = 0. \tag*{\(\square\)}\]
+	<br>
+		
+    <h6>By Tony Wang</h6>
+    Substituting \(x = 0\), we note that the function must satisfy \(f(f(y)) = 0\) for all \(y \in \mathbb{R}\). Now suppose that there exists \(c \in \mathbb{R}\) such that \(f(c) \neq 0\). Then we substitute \(x = \frac{c}{f(c)}\) and \(y = c-\frac{c}{f(c)}\) to get
+	\begin{align*}
+	f(xf(x) + f(y)) = xf(x+y) &\implies f(f(xf(x) + f(y))) = f(xf(x+y))\\ &\implies f(f(X)) = 0 = f(c),
+	\end{align*}
+	a contradiction. Hence \(f(c) = 0\) for all \(c \in \mathbb{R}\) is the only possible solution. It is easy to check that it is a valid solution as in solution 1.
+    <br> <br>
+		
+    <h6>By Sharky Kesa</h6>
+    Substituting \(x=0\), we note that the function must satisfy \(f(f(y)) = f^2(y) = 0\) for all \(y \in \mathbb{R}\). Thus, \[f(0) = f(f^2(y)) = f(f(f(y))) = f^2(f(y)) = 0.\] Substituting \(x=1\) gives \[f(f(1)+f(y)) = f(y+1)\] and substituting \(x=f(1)\) and \(y=f(z)\) for some \(z \in \mathbb{R}\) gives \[f(1)f(f(1)+f(z)) = f(f(1)f(f(1)) + f(f(z)))=f(0+0)=0.\] However, we know \(f(f(1)+f(z))=f(z+1)\), so we must have \(f(1) f(z+1) = 0\). Therefore, \(f(1)=0\) or \(f(z+1)=0\) for all \(z\). If \(f(1)=0\), then \[f(z+1)=f(f(1)+f(z))=f(f(z))=0\] Thus, \(f(z+1)=0 \implies f(z) = 0\) for all \(z \in \mathbb{R}\). This is easily verified as a valid solution as in solution 1.
+    <br> <br><hr>
+
+    <h3>Problem 3</h3>
+    Let \(n\) and \(k\) be given positive integers.  Find the number of \(k\)-tuples \((S_1, S_2, \dots, S_k)\) of sets \(S_i\) such that \(S_i \subseteq \{1, 2, \dots, n\}\) and \(S_1 \subseteq S_2 \supseteq S_3 \subseteq S_4 \supseteq S_5 \subseteq \cdots S_k\).
+    <br>
+    <h3>Solution</h3>
+    <br> <br>
+    
+    <h3>Problem 4</h3>
+	Let \(\Gamma\) be the circumcircle of \(\triangle ABC\). \(O\) lies on the internal angle bisector of \(\angle BAC\) such that a circle centred at \(O\) is tangent to the segment \(BC\) at \(P\) and the arc \(BC\) of \(\Gamma\) without \(A\) at \(Q\). Prove that \(\angle PAO = \angle QAO\).
+	<br>
+    <h3>Solution</h3>
+
+		
+		
+		
+		
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
